@@ -1,0 +1,24 @@
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  image: node:18-alpine
+  script:
+    - cd api
+    - npm install
+    - npm test
+
+build:
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - cd api
+    - docker build -t dernier-metro/api:latest .
+    - docker build -t dernier-metro/api:blue .
+    - docker build -t dernier-metro/api:green .
+  only:
+    - main

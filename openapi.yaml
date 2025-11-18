@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Dernier Metro API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+  /health:
+    get:
+      summary: health
+      responses:
+        '200':
+          description: ok
+
+  /last-metro:
+    get:
+      summary: dernier metro
+      parameters:
+        - name: station
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  station:
+                    type: string
+                  departed_at:
+                    type: string
+        '404':
+          description: not found
+
+  /next-metro:
+    get:
+      summary: prochain metro
+      parameters:
+        - name: station
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  station:
+                    type: string
+                  headwayMin:
+                    type: integer
+                  nextArrival:
+                    type: string
