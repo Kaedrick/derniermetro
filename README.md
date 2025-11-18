@@ -61,8 +61,7 @@ Si la base ne répond pas : 500.
 
 ## Documentation OpenAPI
 
-Le fichier `openapi.yaml` contient une doc basique pour les différentes routes.  
-Ce n’est pas hyper complet mais ça suffit pour tester dans Swagger si besoin.
+Le fichier `openapi.yaml` contient une doc basique pour les différentes routes, suffisant pour test sur Swagger;
 
 ---
 
